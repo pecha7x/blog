@@ -66,7 +66,7 @@ module Admin
 
       # Only allow a list of trusted parameters through.
       def article_params
-        params.expect(article: [ :title, :body ])
+        params.expect(article: %i[title content])
       end
   end
 end
