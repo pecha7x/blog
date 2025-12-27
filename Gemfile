@@ -29,8 +29,6 @@ gem "thruster", require: false
 
 gem "image_processing", "~> 1.2"
 
-
-
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
   gem "bundler-audit", require: false
@@ -43,3 +41,4 @@ group :development do
 end
 
 gem "devise", "~> 4.9"
+gem "lexxy", "~> 0.1.23.beta"
