@@ -1,0 +1,19 @@
+<% if active %>
+  <% if mobile %>
+    <a href="#" aria-current="page" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"><%= name %></a>
+  <% else %>
+    <a href="#" aria-current="page" class="rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"><%= name %></a>
+  <% end %>
+<% else %>
+  <% if mobile %>
+    <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-white/5 hover:text-white"><%= name %></a>
+  <% else %>
+    <a href="#" class="rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-white/5 hover:text-white"><%= name %></a>
+  <% end %>
+<% end %>
+
+
+<% klass = "rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white" %>
+<% klass += "block" if mobile %>
+<%# aria-current="page" if active %>
+<%#= link_to name, edit_admin_article_path(@article), class: klass %>

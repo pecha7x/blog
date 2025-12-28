@@ -1,0 +1,13 @@
+<el-dropdown class="relative">
+  <button class="relative flex rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
+    <span class="absolute -inset-1.5"></span>
+    <%= image_tag("me.jpg", class: "h-[3rem] w-[3rem] rounded-full bg-gray-800 outline outline-1 -outline-offset-1 outline-white/10", alt: "Me") %>
+  </button>
+
+  <el-menu anchor="bottom end" popover class="m-0 w-48 origin-top-right rounded-md bg-white p-0 py-1 shadow-lg outline outline-1 outline-black/5 transition [--anchor-gap:theme(spacing.2)] [transition-behavior:allow-discrete] data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in">
+    <a href="#" class="block px-4 py-2 text-sm text-gray-700 focus:bg-gray-100 focus:outline-none">About me</a>
+    <a href="#" class="block px-4 py-2 text-sm text-gray-700 focus:bg-gray-100 focus:outline-none">Contacts</a>
+    <a href="#" class="block px-4 py-2 text-sm text-gray-700 focus:bg-gray-100 focus:outline-none">Admin Panel</a>
+    <a href="#" class="block px-4 py-2 text-sm text-gray-700 focus:bg-gray-100 focus:outline-none">Sign out</a>
+  </el-menu>
+</el-dropdown>
