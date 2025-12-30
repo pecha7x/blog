@@ -3,11 +3,14 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :articles
+    resource :dashboard, only: :show
   end
 
   resources :articles, only: %i[index show]
+  resources :categories, only: :show
 
   get "up" => "rails/health#show", as: :rails_health_check
+  get "home/index"
 
-  root "articles#index"
+  root "home#index"
 end

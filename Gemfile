@@ -42,3 +42,5 @@ end
 
 gem "devise", "~> 4.9"
 gem "lexxy", "~> 0.1.23.beta"
+gem "positioning"
+gem "friendly_id", "~> 5.5.0"

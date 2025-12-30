@@ -110,6 +110,8 @@ GEM
     et-orbi (1.4.0)
       tzinfo
     ffi (1.17.2)
+    friendly_id (5.5.1)
+      activerecord (>= 4.0.0)
     fugit (1.12.1)
       et-orbi (~> 1.4)
       raabro (~> 1.4)
@@ -191,6 +193,9 @@ GEM
       ast (~> 2.4.1)
       racc
     pg (1.6.2)
+    positioning (0.4.7)
+      activerecord (>= 6.1)
+      activesupport (>= 6.1)
     pp (0.6.3)
       prettyprint
     prettyprint (0.2.0)
@@ -364,12 +369,14 @@ DEPENDENCIES
   bundler-audit
   debug
   devise (~> 4.9)
+  friendly_id (~> 5.5.0)
   image_processing (~> 1.2)
   importmap-rails
   jbuilder
   kamal
   lexxy (~> 0.1.23.beta)
   pg (~> 1.1)
+  positioning
   propshaft
   puma (>= 5.0)
   rails (~> 8.1.1)
@@ -420,6 +427,7 @@ CHECKSUMS
   erubi (1.13.1) sha256=a082103b0885dbc5ecf1172fede897f9ebdb745a4b97a5e8dc63953db1ee4ad9
   et-orbi (1.4.0) sha256=6c7e3c90779821f9e3b324c5e96fda9767f72995d6ae435b96678a4f3e2de8bc
   ffi (1.17.2) sha256=297235842e5947cc3036ebe64077584bff583cd7a4e94e9a02fdec399ef46da6
+  friendly_id (5.5.1) sha256=e018f2b89bfc143276fee6d378a64792385cd4fddd3d4fce501f59ec19c06207
   fugit (1.12.1) sha256=5898f478ede9b415f0804e42b8f3fd53f814bd85eebffceebdbc34e1107aaf68
   globalid (1.3.0) sha256=05c639ad6eb4594522a0b07983022f04aa7254626ab69445a0e493aa3786ff11
   i18n (1.14.8) sha256=285778639134865c5e0f6269e0b818256017e8cde89993fdfcbfb64d088824a5
@@ -456,6 +464,7 @@ CHECKSUMS
   parallel (1.27.0) sha256=4ac151e1806b755fb4e2dc2332cbf0e54f2e24ba821ff2d3dcf86bf6dc4ae130
   parser (3.3.10.0) sha256=ce3587fa5cc55a88c4ba5b2b37621b3329aadf5728f9eafa36bbd121462aabd6
   pg (1.6.2) sha256=58614afd405cc9c2c9e15bffe8432e0d6cfc58b722344ad4a47c73a85189c875
+  positioning (0.4.7) sha256=c9a8cfba8b99180bd2b05022cdbcc7b234ea8bb1aa9101010e06bdda9a7bb220
   pp (0.6.3) sha256=2951d514450b93ccfeb1df7d021cae0da16e0a7f95ee1e2273719669d0ab9df6
   prettyprint (0.2.0) sha256=2bc9e15581a94742064a3cc8b0fb9d45aae3d03a1baa6ef80922627a0766f193
   prism (1.7.0) sha256=10062f734bf7985c8424c44fac382ac04a58124ea3d220ec3ba9fe4f2da65103

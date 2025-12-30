@@ -1,0 +1,24 @@
+<% button_class = "block rounded-md px-3 py-2 text-lg font-medium text-gray-300 hover:bg-white/5 hover:text-white cursor-pointer" %>
+
+<% if section.categories.blank? %>
+  <%= link_to section.name, root_path, class: button_class %>
+<% else %>
+  <details class="group">
+    <summary class="flex items-center justify-between gap-2 pr-2 font-medium marker:content-none hover:cursor-pointer">
+      <span class="<%= button_class %>">
+        <%= section.name %>
+      </span>
+      <svg class="w-5 h-5 text-gray-500 transition group-open:rotate-90" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"></path>
+      </svg>
+    </summary>
+
+    <div class="px-4">
+      <ul class="flex flex-col gap-1">
+        <% section.categories.each do |category| %>
+          <li><%= link_to category.name, category_path(category), class: "block px-4 py-2 text-md text-gray-300 hover:bg-white/5 hover:text-white" %></li>
+        <% end %>
+      </ul>
+    </div>
+  </details>
+<% end %>

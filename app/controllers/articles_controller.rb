@@ -4,6 +4,6 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.find(params.expect(:id))
+    @article = Article.friendly.find(params.expect(:id))
   end
 end

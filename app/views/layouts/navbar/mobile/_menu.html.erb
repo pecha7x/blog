@@ -1,5 +1,5 @@
 <div class="space-y-1 px-2 pb-3 pt-2">
-  <% ['Core', 'Programing Languages', 'Extra Tools'].each do |item_name| %>
-    <%= render 'layouts/navbar/menu_item', name: item_name, active: false, mobile: true %>
+  <% @navbar_sections.each do |section| %>
+    <%= render 'layouts/navbar/mobile/menu_item', section:, active: false %>
   <% end %>
 </div>
