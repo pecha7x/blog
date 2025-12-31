@@ -6,8 +6,9 @@ Rails.application.routes.draw do
     resource :dashboard, only: :show
   end
 
-  resources :articles, only: %i[index show]
-  resources :categories, only: :show
+  resources :categories, only: :show do
+    resources :articles, only: :show
+  end
 
   get "up" => "rails/health#show", as: :rails_health_check
   get "home/index"
