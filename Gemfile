@@ -41,6 +41,6 @@ group :development do
 end
 
 gem "devise", "~> 4.9"
-gem "lexxy", "~> 0.1.23.beta"
+gem "lexxy", "~> 0.1.26.beta"
 gem "positioning"
 gem "friendly_id", "~> 5.6.0"
