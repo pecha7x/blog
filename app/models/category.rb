@@ -4,6 +4,8 @@ class Category < ApplicationRecord
   belongs_to :section
   has_many :articles
 
+  has_rich_text :description
+
   positioned on: :section
 
   default_scope { order(:position) }

@@ -5,7 +5,7 @@
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
   <% end %>
 
-  <h1 class="font-bold text-4xl"><%= render @category %></h1>
+  <%= render @category %>
 
   <% @category.articles.each do |article| %>
     <%= link_to article.title, category_article_path(@category, article), class: "text-center inline-block font-medium text-green-600" %>

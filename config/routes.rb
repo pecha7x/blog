@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :articles
     resource :dashboard, only: :show
+    resources :categories
   end
 
   resources :categories, only: :show do
