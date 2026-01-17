@@ -4,6 +4,7 @@ class Category < ApplicationRecord
   belongs_to :section
   has_many :articles
 
+  has_one_attached :icon
   has_rich_text :description
 
   positioned on: :section

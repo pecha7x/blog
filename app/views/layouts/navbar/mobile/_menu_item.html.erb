@@ -16,7 +16,14 @@
     <div class="px-4">
       <ul class="flex flex-col gap-1">
         <% section.categories.each do |category| %>
-          <li><%= link_to category.name, category_path(category), class: "block px-4 py-2 text-md text-gray-300 hover:bg-white/5 hover:text-white" %></li>
+          <%= link_to category_path(category), class: "group" do %>
+            <li class="flex flex-row gap-2 items-center px-4 py-2 group-hover:bg-white/5">
+              <% if category.icon.attached? %>
+                <%= image_tag category.icon, size: "25x25" %>
+              <% end %>
+              <span class="text-md text-gray-300 group-hover:text-white"><%= category.name %></span>
+            </li>
+          <% end %>  
         <% end %>
       </ul>
     </div>
