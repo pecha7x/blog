@@ -18,9 +18,7 @@
         <% section.categories.each do |category| %>
           <%= link_to category_path(category), class: "group" do %>
             <li class="flex flex-row gap-2 items-center px-4 py-2 group-hover:bg-white/5">
-              <% if category.icon.attached? %>
-                <%= image_tag category.icon, size: "25x25" %>
-              <% end %>
+              <%= icon_tag(category) %>
               <span class="text-md text-gray-300 group-hover:text-white"><%= category.name %></span>
             </li>
           <% end %>  

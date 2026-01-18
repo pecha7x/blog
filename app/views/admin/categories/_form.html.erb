@@ -14,12 +14,18 @@
   <% @sections = Section.all%>
   <div class="my-5">
     <%= form.label :section_id, "Section" %>
-    <%= form.collection_select(:section_id, @sections, :id, :name, { prompt: "Select a section" }, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": category.errors[:name].none?, "border-red-400 focus:outline-red-600": category.errors[:name].any?}]) %>
+    <%= form.collection_select(:section_id, @sections, :id, :name, { prompt: "Select a section" }, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": category.errors[:section_id].none?, "border-red-400 focus:outline-red-600": category.errors[:section_id].any?}]) %>
   </div>
 
   <div class="my-5">
+    <%= icon_tag(category, zoom: 200, class: "bg-gray-300 p-1 rounded") %>
     <%= form.label :icon %>
     <%= form.file_field :icon %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :icon_height %>
+    <%= form.text_field :icon_height, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": category.errors[:icon_height].none?, "border-red-400 focus:outline-red-600": category.errors[:icon_height].any?}] %>
   </div>
 
   <div class="my-5">
