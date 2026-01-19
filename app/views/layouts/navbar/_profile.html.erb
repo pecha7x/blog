@@ -5,8 +5,10 @@
   </button>
 
   <el-menu anchor="bottom end" popover class="m-0 w-48 origin-top-right bg-gray-600 p-0 py-1 shadow-lg outline outline-1 outline-black/5 transition [--anchor-gap:theme(spacing.2)] [transition-behavior:allow-discrete] data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in">
-    <a href="#" class="block px-4 py-2 text-md text-gray-300 hover:bg-white/5 hover:text-white">About me</a>
-    <a href="#" class="block px-4 py-2 text-md text-gray-300 hover:bg-white/5 hover:text-white">Contacts</a>
+    <%= link_to "About me", 
+      about_path,
+      class: "block px-4 py-2 text-md text-gray-300 hover:bg-white/5 hover:text-white"
+    %>
     <% if admin_user_signed_in? %>
       <%= link_to "Admin Dashboard", 
           admin_dashboard_path,

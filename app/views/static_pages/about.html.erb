@@ -1,12 +1,19 @@
-<section class="overflow-hidden">
-  <div class="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
+<section class="w-full overflow-hidden">
+  <div class="mx-auto max-w-7xl">
     <div class="grid items-center grid-cols-1 md:grid-cols-2">
-      <div>
-        <h2 class="text-2xl font-bold leading-tight text-black sm:text-3xl lg:text-4xl">Hey 👋 I am
-          <br class="block sm:hidden" />Artem Pecherin
+      <div class="relative">
+        <%= image_tag(
+          "me_full.jpg",
+          class: "relative w-full xl:max-w-lg xl:mx-auto 2xl:origin-bottom 2xl:scale-110",
+          alt: "Me-Full"
+        ) %>
+      </div>
+      <div class="mt-5 md:mt-0 mb-5">
+        <h2 class="text-xl font-bold leading-tight text-black sm:text-2xl lg:text-3xl">Hey 👋 
+          <br/>My name is Artem Pecherin
         </h2>
-        <div class="max-w-lg mt-3 text-xl leading-relaxed text-gray-700 md:mt-8">
-          I am 37 years old, and I have been engaged in software development since 2010.<br/>
+        <div class="max-w-lg text-xl leading-relaxed text-gray-700 mt-3 md:mt-8">
+          I am <%= @age %> years old, and I have been engaged in software development since 2010.<br/>
           My main interests include:<br/>
           <ul class="list-disc ml-6 text-lg">
             <li>software development using Ruby, Java, Golang, and JavaScript stacks, as well as related methodologies, frameworks, and libraries;</li>
@@ -14,14 +21,34 @@
             <li>system administration of UNIX-like operating systems.</li>
           </ul>
         </div>
-      </div>
 
-      <div class="relative">
-        <%= image_tag(
-          "me_full.jpg",
-          class: "relative w-full xl:max-w-lg xl:mx-auto 2xl:origin-bottom 2xl:scale-110",
-          alt: "Me-Full"
-        ) %>
+        <div class="mt-3 md:mt-8">
+          <h3 class="text-lg font-bold leading-tight text-black sm:text-lg lg:text-xl">
+            You are welcome to contact me directly using following links:
+          </h3>
+          <div class="max-w-lg text-xl leading-relaxed text-gray-700 mt-1 md:mt-1">
+            <ul class="ml-6 text-lg">
+              <%= mail_to "pecha7x@yandex.ru" do %>  
+                <li class="flex flex-row gap-2 items-center px-4 py-2 group-hover:bg-white/5">
+                  <%= image_tag("mail.png", size: "32x32") %>
+                  <b>pecha7x@yandex.ru</b>
+                </li>
+              <% end %>
+              <%= link_to "https://t.me/pecha7x", target: "_blank" do %>
+                <li class="flex flex-row gap-2 items-center px-4 py-2 group-hover:bg-white/5">
+                  <%= image_tag("telegram.png", size: "32x32") %>
+                  <b>@pecha7x</b>
+                </li>
+              <% end %>
+              <%= link_to "https://wa.me/79282147974", target: "_blank" do %>
+                <li class="flex flex-row gap-2 items-center px-4 py-2 group-hover:bg-white/5">
+                  <%= image_tag("whatsapp.png", size: "32x32") %>
+                  <b>+7 928 214 7974</b>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>  
       </div>
     </div>
   </div>
