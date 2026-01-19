@@ -8,4 +8,8 @@ class Article < ApplicationRecord
   validates :title, presence: true, length: { minimum: 10 }
 
   friendly_id :title, use: :slugged
+
+  positioned on: :category
+
+  default_scope { order(:position) }
 end
