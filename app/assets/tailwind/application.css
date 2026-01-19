@@ -1,5 +1,18 @@
 @import "tailwindcss";
 
+:root {
+  --my-indigo-color: #8680ff;
+  --my-indigo-dark-color: #6f68fc;
+}
+
 .bg-gray-600 {
   background-color: #2c3e57;
+}
+
+.bg-indigo {
+  background-color: var(--my-indigo-color);
+}
+
+.bg-indigo-dark {
+  background-color: var(--my-indigo-dark-color);
 }

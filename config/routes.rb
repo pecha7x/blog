@@ -8,13 +8,13 @@ Rails.application.routes.draw do
   end
 
   resources :categories, only: :show do
-    resources :articles, only: :show
+    resources :articles, only: %i[show index]
   end
 
-  root 'static_pages#about'
+  root "static_pages#about"
 
   get "up" => "rails/health#show", as: :rails_health_check
 
-  get '/about', to: 'static_pages#about'
-  get '/home', to: 'static_pages#home'
+  get "/about", to: "static_pages#about"
+  get "/home", to: "static_pages#home"
 end
