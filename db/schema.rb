@@ -69,10 +69,11 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_19_210909) do
     t.datetime "created_at", null: false
     t.integer "position", null: false
     t.string "slug"
+    t.integer "status", default: 0, null: false
     t.string "title"
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_articles_on_category_id"
-    t.index ["position", "category_id"], name: "index_articles_on_position_and_category_id", unique: true
+    t.index ["position", "category_id", "status"], name: "index_articles_on_position_and_category_id_and_status", unique: true
     t.index ["slug"], name: "index_articles_on_slug", unique: true
   end
 

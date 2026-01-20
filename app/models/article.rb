@@ -9,7 +9,13 @@ class Article < ApplicationRecord
 
   friendly_id :title, use: :slugged
 
-  positioned on: :category
+  positioned on: [ :category, :status ]
 
   default_scope { order(:position) }
+
+  enum :status, {
+    draft: 0,
+    published: 1,
+    archived: 2
+  }
 end
