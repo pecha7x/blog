@@ -2,7 +2,7 @@ class TailwindBreadcrumbsBuilder < BreadcrumbsOnRails::Breadcrumbs::Builder
   def render
     return "" if @elements.nil? || @elements.empty?
 
-    position_attrs = "fixed bottom-5 right-1/2 transform translate-x-1/2 z-1"
+    position_attrs = "fixed bottom-0 md:bottom-5 right-1/2 transform translate-x-1/2 z-1"
     @context.content_tag(:nav, class: position_attrs+ " flex py-3 px-5", aria: { label: "Breadcrumb" }) do
       @context.content_tag(:ol, class: "inline-flex items-center space-x-1 md:space-x-3") do
         @elements.collect do |element|
