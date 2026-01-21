@@ -18,7 +18,7 @@ class TailwindBreadcrumbsBuilder < BreadcrumbsOnRails::Breadcrumbs::Builder
 
     @context.content_tag(:li, aria) do
       @context.content_tag(:div, class: "flex items-center") do
-        link_or_text = @context.link_to_unless_current(compute_name(element), compute_path(element), element.options.merge(class: "text-white bg-gradient-to-r from-[#8680ff] to-[#6f68fc] py-2 px-5 rounded"))
+        link_or_text = @context.link_to_unless_current(compute_name(element), compute_path(element), element.options.merge(class: "whitespace-nowrap text-white bg-gradient-to-r from-[#8680ff] to-[#6f68fc] py-2 px-5 rounded"))
         # divider = @context.content_tag(:span, (@options[:separator] || '>').html_safe, class: 'divider') unless current
 
         # link_or_text + (divider || '')
