@@ -13,6 +13,6 @@ class NextArticleService < ApplicationService
       .where(category_id:, status:)
       .where.not(id: article.id)
       .where("position > ?", position)
-      .last
+      .first
   end
 end
