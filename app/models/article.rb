@@ -5,7 +5,7 @@ class Article < ApplicationRecord
 
   has_rich_text :content
 
-  validates :title, presence: true, length: { minimum: 10 }
+  validates :title, presence: true, length: { minimum: 3 }
 
   friendly_id :title, use: :slugged
 
