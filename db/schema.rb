@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_01_23_123719) do
+ActiveRecord::Schema[8.1].define(version: 2026_01_25_195954) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -74,14 +74,16 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_23_123719) do
 
   create_table "articles", force: :cascade do |t|
     t.integer "category_id", null: false
+    t.integer "category_position", null: false
     t.datetime "created_at", null: false
     t.integer "parent_id"
-    t.integer "position", null: false
     t.string "slug"
+    t.integer "thread_position", null: false
     t.string "title"
     t.datetime "updated_at", null: false
+    t.index ["category_id", "category_position"], name: "index_articles_on_category_id_and_category_position", unique: true
+    t.index ["category_id", "parent_id", "thread_position"], name: "idx_on_category_id_parent_id_thread_position_073d22e7a7", unique: true
     t.index ["category_id"], name: "index_articles_on_category_id"
-    t.index ["position", "category_id", "parent_id"], name: "index_articles_on_position_and_category_id_and_parent_id", unique: true
     t.index ["slug"], name: "index_articles_on_slug", unique: true
   end
 

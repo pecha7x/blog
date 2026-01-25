@@ -10,7 +10,8 @@ class Article < ApplicationRecord
 
   friendly_id :title, use: :slugged
 
-  positioned on: [ :category, :parent_id ]
+  positioned on: [ :category, :parent_id ], column: :thread_position
+  positioned on: :category, column: :category_position
 
-  default_scope { order(:position) }
+  default_scope { order(:thread_position) }
 end

@@ -66,7 +66,7 @@ module Admin
 
       # Only allow a list of trusted parameters through.
       def article_params
-        params.expect(article: %i[title content position parent_id category_id])
+        params.expect(article: %i[title content category_position thread_position parent_id category_id])
       end
   end
 end
