@@ -4,18 +4,13 @@ class Article < ApplicationRecord
   belongs_to :category
 
   has_rich_text :content
+  has_closure_tree
 
   validates :title, presence: true, length: { minimum: 3 }
 
   friendly_id :title, use: :slugged
 
-  positioned on: [ :category, :status ]
+  positioned on: [ :category, :parent_id ]
 
   default_scope { order(:position) }
-
-  enum :status, {
-    draft: 0,
-    published: 1,
-    archived: 2
-  }
 end

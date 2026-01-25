@@ -1,0 +1,11 @@
+<% active_mark = expanded ? 'active' : '' %>
+
+<div id="hs-heading-<%= accordion_id %>" class="hs-accordion <%= active_mark %>" role="treeitem" aria-expanded="<%= expanded %>">
+  <!-- 2nd Level Accordion Heading -->
+  <%= render 'shared/tree/accordion/heading', accordion_id:, item:, expanded: %>
+  <!-- End 2nd Level Accordion Heading -->
+
+  <!-- 2nd Level Collapse -->
+  <%= render 'shared/tree/accordion/collapse', accordion_id:, item:, expanded: %>
+  <!-- End 2nd Level Collapse -->
+</div>

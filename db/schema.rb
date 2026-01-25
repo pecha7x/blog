@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_01_19_210909) do
+ActiveRecord::Schema[8.1].define(version: 2026_01_23_123719) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -64,16 +64,24 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_19_210909) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "article_hierarchies", id: false, force: :cascade do |t|
+    t.integer "ancestor_id", null: false
+    t.integer "descendant_id", null: false
+    t.integer "generations", null: false
+    t.index ["ancestor_id", "descendant_id", "generations"], name: "article_anc_desc_idx", unique: true
+    t.index ["descendant_id"], name: "article_desc_idx"
+  end
+
   create_table "articles", force: :cascade do |t|
     t.integer "category_id", null: false
     t.datetime "created_at", null: false
+    t.integer "parent_id"
     t.integer "position", null: false
     t.string "slug"
-    t.integer "status", default: 0, null: false
     t.string "title"
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_articles_on_category_id"
-    t.index ["position", "category_id", "status"], name: "index_articles_on_position_and_category_id_and_status", unique: true
+    t.index ["position", "category_id", "parent_id"], name: "index_articles_on_position_and_category_id_and_parent_id", unique: true
     t.index ["slug"], name: "index_articles_on_slug", unique: true
   end
 

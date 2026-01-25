@@ -1,7 +1,7 @@
 class NextArticleService < ApplicationService
   attr_reader :article
 
-  delegate :category_id, :status, :position, :id, to: :article
+  delegate :category_id, :position, :id, to: :article
 
   def initialize(article:)
     super
@@ -10,7 +10,7 @@ class NextArticleService < ApplicationService
 
   def call
     Article
-      .where(category_id:, status:)
+      .where(category_id:)
       .where.not(id: article.id)
       .where("position > ?", position)
       .first

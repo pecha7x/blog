@@ -13,7 +13,7 @@ module Admin
 
     # GET /categories/new
     def new
-      @category = Category.new
+      @category = Category.new(section_id: params[:section_id])
     end
 
     # GET /categories/1/edit
@@ -26,7 +26,7 @@ module Admin
 
       respond_to do |format|
         if @category.save
-          format.html { redirect_to admin_category_path(@category), notice: "Category was successfully created." }
+          format.html { redirect_to admin_dashboard_path, notice: "Category was successfully created." }
           format.json { render :show, status: :created, location: @category }
         else
           format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +39,7 @@ module Admin
     def update
       respond_to do |format|
         if @category.update(category_params)
-          format.html { redirect_to admin_category_path(@category), notice: "Category was successfully updated.", status: :see_other }
+          format.html { redirect_to admin_dashboard_path, notice: "Category was successfully updated.", status: :see_other }
           format.json { render :show, status: :ok, location: @category }
         else
           format.html { render :edit, status: :unprocessable_entity }
@@ -53,7 +53,7 @@ module Admin
       @category.destroy!
 
       respond_to do |format|
-        format.html { redirect_to admin_categories_path, notice: "Category was successfully destroyed.", status: :see_other }
+        format.html { redirect_to admin_dashboard_path, notice: "Category was successfully destroyed.", status: :see_other }
         format.json { head :no_content }
       end
     end

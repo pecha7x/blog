@@ -13,7 +13,7 @@ module Admin
 
     # GET /articles/new
     def new
-      @article = Article.new
+      @article = Article.new(category_id: params[:category_id], parent_id: params[:parent_id])
     end
 
     # GET /articles/1/edit
@@ -26,7 +26,7 @@ module Admin
 
       respond_to do |format|
         if @article.save
-          format.html { redirect_to admin_article_path(@article), notice: "Article was successfully created." }
+          format.html { redirect_to admin_dashboard_path, notice: "Article was successfully created." }
           format.json { render :show, status: :created, location: @article }
         else
           format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +39,7 @@ module Admin
     def update
       respond_to do |format|
         if @article.update(article_params)
-          format.html { redirect_to admin_article_path(@article), notice: "Article was successfully updated.", status: :see_other }
+          format.html { redirect_to admin_dashboard_path, notice: "Article was successfully updated.", status: :see_other }
           format.json { render :show, status: :ok, location: @article }
         else
           format.html { render :edit, status: :unprocessable_entity }
@@ -53,7 +53,7 @@ module Admin
       @article.destroy!
 
       respond_to do |format|
-        format.html { redirect_to admin_articles_path, notice: "Article was successfully destroyed.", status: :see_other }
+        format.html { redirect_to admin_dashboard_path, notice: "Article was successfully destroyed.", status: :see_other }
         format.json { head :no_content }
       end
     end
@@ -66,7 +66,7 @@ module Admin
 
       # Only allow a list of trusted parameters through.
       def article_params
-        params.expect(article: %i[title content position status category_id])
+        params.expect(article: %i[title content position parent_id category_id])
       end
   end
 end

@@ -6,7 +6,11 @@
   <% end %>
 
   <div class="flex justify-between items-center">
-    <%= link_to "Categories", admin_categories_path, class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white block font-medium" %>
-    <%= link_to "Articles", admin_articles_path, class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white block font-medium" %>
+    <%= link_to "New Category", new_admin_category_path, class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white block font-medium" %>
+    <%= link_to "New Article", new_admin_article_path, class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white block font-medium" %>
+  </div>
+
+  <div id="articles" class="min-w-full divide-y divide-gray-200 space-y-5 pt-10">
+    <%= render 'shared/tree/base', items: @articles %>
   </div>
 </div>

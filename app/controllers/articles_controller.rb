@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
   def index
     @category = Category.friendly.find(params.expect(:category_id))
-    @articles = @category.articles.published
+    @articles = @category.articles
 
     add_breadcrumb "Back to #{@category.name}", category_path(@category)
   end

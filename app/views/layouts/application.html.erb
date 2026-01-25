@@ -24,6 +24,8 @@
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "lexxy" %>
+
+    <%= javascript_include_tag "https://cdn.jsdelivr.net/npm/preline@3.2.3/dist/preline.min.js" %>
     <%= javascript_importmap_tags %>
 
     <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
@@ -34,6 +36,7 @@
 
     <main class="container min-h-screen mx-auto pt-18 px-5 flex border-l-2 border-r-2 border-gray-300 bg-gray-100">
       <%= render_breadcrumbs builder: ::TailwindBreadcrumbsBuilder %>
+
       <%= yield %>
     </main>
   </body>

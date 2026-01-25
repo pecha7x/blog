@@ -1,0 +1,20 @@
+<% klass = "hs-accordion-group" %>
+<% unless first_level %>
+  <% klass += " ps-7 relative before:absolute before:top-0 before:start-3 before:w-0.5 before:-ms-px before:h-full before:bg-gray-300" %>
+<% end %>  
+
+<div class="<%= klass %>" role="group" data-hs-accordion-always-open="">
+  <% items.each do |item| %>
+    <% if item[:items].empty? %>
+      <% klass_item = "py-0.5 px-1.5" %>
+      <% if item[:link].present? %>
+        <% klass_item += " cursor-pointer" %>
+      <% end %>
+      <div class="<%= klass_item %>" role="treeitem">
+        <%= render 'shared/tree/accordion/node', item: %>
+      </div>
+    <% else %>
+      <%= render 'shared/tree/accordion/base', item:, accordion_id: item[:id], expanded: true %>
+    <% end %>
+  <% end %>
+</div>
