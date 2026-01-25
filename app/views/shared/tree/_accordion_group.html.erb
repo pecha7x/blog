@@ -14,7 +14,7 @@
         <%= render 'shared/tree/accordion/node', item: %>
       </div>
     <% else %>
-      <%= render 'shared/tree/accordion/base', item:, accordion_id: item[:id], expanded: true %>
+      <%= render 'shared/tree/accordion/base', item:, accordion_id: item[:id], expanded: item[:expanded] %>
     <% end %>
   <% end %>
 </div>

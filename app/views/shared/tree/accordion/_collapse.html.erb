@@ -1,7 +1,7 @@
 <div 
   id="hs-collapse-<%= accordion_id %>"
   aria-labelledby="hs-heading-<%= accordion_id %>"
-  class="<% expanded ? '' : 'hidden' %> hs-accordion-content w-full overflow-hidden transition-[height] duration-300"
+  class="<%= expanded ? '' : 'hidden' %> hs-accordion-content w-full overflow-hidden transition-[height] duration-300"
   role="group">
   <!-- 2nd Level Accordion Group -->
   <%= render 'shared/tree/accordion_group', expanded:, items: item[:items], first_level: false %>

@@ -7,6 +7,8 @@ module Admin
         {
           id: section.id,
           name: section.name,
+          expanded: true,
+          link: nil,
           items: section.categories.map do |category|
             {
               id: category.id,
@@ -16,6 +18,7 @@ module Admin
                 {
                   id: root_article.id,
                   name: root_article.title,
+                  expanded: false,
                   link: edit_admin_article_path(root_article),
                   items: article_children_items(root_article, category)
                 }
@@ -23,6 +26,7 @@ module Admin
                 {
                   id: "new",
                   name: "Add New +",
+                  expanded: false,
                   link: new_admin_article_path(category_id: category.id),
                   items: []
                 }
@@ -32,6 +36,7 @@ module Admin
             {
               id: "new",
               name: "Add New +",
+              expanded: false,
               link: new_admin_category_path(section_id: section.id),
               items: []
             }
@@ -48,6 +53,7 @@ module Admin
         {
           id: child.id,
           name: child.title,
+          expanded: false,
           link: edit_admin_article_path(child),
           items: child_items
         }
@@ -55,6 +61,7 @@ module Admin
         {
           id: "new",
           name: "Add New +",
+          expanded: false,
           link: new_admin_article_path(category_id: category.id, parent_id: article.id),
           items: []
         }
