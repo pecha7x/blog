@@ -6,7 +6,7 @@ class ArticlesController < ApplicationController
         id: root_article.id,
         name: root_article.title,
         expanded: true,
-        link: category_article_path(category, root_article),
+        link: article_link(root_article, category),
         items: article_children_items(root_article, category)
       }
     end
@@ -42,9 +42,17 @@ class ArticlesController < ApplicationController
         id: child.id,
         name: child.title,
         expanded: true,
-        link: category_article_path(category, child),
+        link: article_link(child, category),
         items: child_items
       }
     end
+  end
+
+  def article_link(article, category)
+    if article.content.body.html_safe == '<p><br></p>'
+      return nil
+    end
+
+    category_article_path(category, child)
   end
 end
