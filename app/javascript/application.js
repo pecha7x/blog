@@ -17,3 +17,8 @@ const initPreline = () => {
 document.addEventListener("turbo:load", initPreline); // For full page loads
 document.addEventListener("turbo:render", initPreline); // For Turbo Frame/Stream renders
 document.addEventListener("turbo:after-stream-render", initPreline); // Another hook for Turbo Streams
+
+window.onbeforeunload = function () {
+  console.log("scrollTo(0, 0);");
+  window.scrollTo(0, 0);
+}
