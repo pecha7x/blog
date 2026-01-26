@@ -3,7 +3,7 @@
 <% if section.categories.blank? %>
   <%= link_to section.name, root_path, class: button_class %>
 <% else %>
-  <details class="group">
+  <details class="group" data-action="click->navbar#next">
     <summary class="flex items-center justify-between gap-2 pr-2 font-medium marker:content-none hover:cursor-pointer">
       <span class="<%= button_class %>">
         <%= section.name %>
