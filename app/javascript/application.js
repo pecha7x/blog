@@ -8,10 +8,9 @@ import "@rails/actiontext"
 
 // Function to re-initialize Preline and another components
 const init = () => {
-  window.scrollTo(0, 0);
-  setTimeout(() => { 
-    window.scrollTo(0, 0); 
-  }, 100);
+  setTimeout(() => {
+    window.scroll({ top: -1, left: 0, behavior: "smooth" });
+  }, 10); 
 
   if (window.HSStaticMethods) {
     window.HSStaticMethods.autoInit();
