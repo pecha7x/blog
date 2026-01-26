@@ -53,6 +53,6 @@ class ArticlesController < ApplicationController
       return nil
     end
 
-    category_article_path(category, child)
+    category_article_path(category, article)
   end
 end
