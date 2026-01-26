@@ -6,19 +6,16 @@ import "controllers"
 import "lexxy"
 import "@rails/actiontext"
 
-// Function to re-initialize Preline components
-const initPreline = () => {
+// Function to re-initialize Preline and another components
+const init = () => {
+  window.scrollTo(0, 0);
+
   if (window.HSStaticMethods) {
     window.HSStaticMethods.autoInit();
   }
 };
 
 // Re-initialize Preline after different Turbo events
-document.addEventListener("turbo:load", initPreline); // For full page loads
-document.addEventListener("turbo:render", initPreline); // For Turbo Frame/Stream renders
-document.addEventListener("turbo:after-stream-render", initPreline); // Another hook for Turbo Streams
-
-window.onbeforeunload = function () {
-  console.log("scrollTo(0, 0);");
-  window.scrollTo(0, 0);
-}
+document.addEventListener("turbo:load", init); // For full page loads
+document.addEventListener("turbo:render", init); // For Turbo Frame/Stream renders
+document.addEventListener("turbo:after-stream-render", init); // Another hook for Turbo Streams
