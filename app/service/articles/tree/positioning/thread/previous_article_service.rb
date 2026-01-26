@@ -16,7 +16,7 @@ module Articles
               .where(parent_id: article.parent_id)
               .where("thread_position < ?", article.thread_position)
               .where.not(id: article.id)
-              .reorder(thread_position: :asc)
+              .reorder(thread_position: :desc)
               .first
           end
         end
