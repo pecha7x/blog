@@ -16,12 +16,20 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.friendly.find(params.expect(:id))
+
+    previous_article = Articles::Tree::Positioning::PreviousArticleService.call(article: @article)
     next_article = Articles::Tree::Positioning::NextArticleService.call(article: @article)
 
-    add_breadcrumb "Back to list", category_articles_path(@article.category)
+    if previous_article.present?
+      add_breadcrumb "Back", category_article_path(previous_article.category, previous_article)
+    else
+      add_breadcrumb "Back", category_articles_path(@article.category)
+    end
 
     if next_article.present?
       add_breadcrumb "Next", category_article_path(next_article.category, next_article)
+    else
+      add_breadcrumb "Back to list", category_articles_path(@article.category)
     end
   end
 
