@@ -16,7 +16,7 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.friendly.find(params.expect(:id))
-    next_article = NextArticleService.call(article: @article)
+    next_article = Articles::Tree::Positioning::NextArticleService.call(article: @article)
 
     add_breadcrumb "Back to list", category_articles_path(@article.category)
 

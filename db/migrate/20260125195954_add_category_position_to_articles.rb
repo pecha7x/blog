@@ -8,6 +8,6 @@ class AddCategoryPositionToArticles < ActiveRecord::Migration[8.1]
 
     change_column_null(:articles, :category_position, false)
 
-    add_index :articles, [:category_id, :category_position], unique: true
+    add_index :articles, [ :category_id, :category_position ], unique: true
   end
 end
