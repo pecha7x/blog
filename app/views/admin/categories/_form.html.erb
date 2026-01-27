@@ -11,10 +11,14 @@
     </div>
   <% end %>
 
-  <% @sections = Section.all%>
   <div class="my-5">
     <%= form.label :section_id, "Section" %>
-    <%= form.collection_select(:section_id, @sections, :id, :name, { prompt: "Select a section" }, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": category.errors[:section_id].none?, "border-red-400 focus:outline-red-600": category.errors[:section_id].any?}]) %>
+    <%= form.collection_select(:section_id, Section.all, :id, :name, { prompt: "Select a section" }, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": category.errors[:section_id].none?, "border-red-400 focus:outline-red-600": category.errors[:section_id].any?}]) %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :status, "Status" %>
+    <%= form.select(:status, Category.statuses.keys.map { |s| [s.humanize.capitalize, s] }, { prompt: "Select a status" }, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": category.errors[:status].none?, "border-red-400 focus:outline-red-600": category.errors[:status].any?}]) %>
   </div>
 
   <div class="my-5">

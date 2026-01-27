@@ -12,4 +12,9 @@ class Category < ApplicationRecord
   default_scope { order(:position) }
 
   friendly_id :name, use: :slugged
+
+  enum :status, {
+    active: 0,
+    disabled: 1
+  }
 end
