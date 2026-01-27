@@ -15,7 +15,6 @@ module Articles
             .where("category_position > ?", article.category_position)
             .where.not(id: article.id)
             .reorder(category_position: :asc)
-            .first
         end
       end
     end
