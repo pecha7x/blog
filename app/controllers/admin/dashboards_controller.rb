@@ -27,7 +27,10 @@ module Admin
                   id: "new",
                   name: "Add New +",
                   expanded: false,
-                  link: new_admin_article_path(category_id: category.id),
+                  link: new_admin_article_path(
+                    category_id: category.id,
+                    previous_article_id: category.articles.roots.last&.id
+                  ),
                   items: []
                 }
               )
@@ -62,7 +65,11 @@ module Admin
           id: "new",
           name: "Add New +",
           expanded: false,
-          link: new_admin_article_path(category_id: category.id, parent_id: article.id),
+          link: new_admin_article_path(
+            category_id: category.id,
+            parent_id: article.id,
+            previous_article_id: article.children.last&.id || article.id
+          ),
           items: []
         }
       )

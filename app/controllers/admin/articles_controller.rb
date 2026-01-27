@@ -13,7 +13,17 @@ module Admin
 
     # GET /articles/new
     def new
-      @article = Article.new(category_id: params[:category_id], parent_id: params[:parent_id])
+      presetted_attributes = {
+        category_id: params[:category_id],
+        parent_id: params[:parent_id]
+      }
+
+      previous_article = Article.find_by_id(params[:previous_article_id])
+      if previous_article.present?
+        presetted_attributes.merge!(category_position: previous_article.category_position + 1)
+      end
+
+      @article = Article.new(**presetted_attributes)
     end
 
     # GET /articles/1/edit
