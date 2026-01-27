@@ -17,8 +17,8 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.friendly.find(params.expect(:id))
 
-    previous_article = Articles::Tree::Positioning::PreviousArticleService.call(article: @article)
-    next_article = Articles::Tree::Positioning::NextArticleService.call(article: @article)
+    previous_article = Articles::Tree::Positioning::PreviousArticlesService.call(article: @article).normal.first
+    next_article = Articles::Tree::Positioning::NextArticlesService.call(article: @article).normal.first
 
     if previous_article.present?
       add_breadcrumb "Prev", category_article_path(previous_article.category, previous_article)
@@ -49,9 +49,7 @@ class ArticlesController < ApplicationController
   end
 
   def article_link(article, category)
-    if article.content.body.html_safe == '<p><br></p>'
-      return nil
-    end
+    return nil if article.node?
 
     category_article_path(category, article)
   end

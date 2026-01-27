@@ -25,9 +25,9 @@ module Articles
         def replaceable_article
           @replaceable_article ||= begin
             if direction == :up
-              Articles::Tree::Positioning::PreviousArticleService.call(article:)
+              Articles::Tree::Positioning::PreviousArticlesService.call(article:).first
             else
-              Articles::Tree::Positioning::NextArticleService.call(article:)
+              Articles::Tree::Positioning::NextArticlesService.call(article:).first
             end
           end
         end

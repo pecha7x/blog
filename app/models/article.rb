@@ -14,4 +14,9 @@ class Article < ApplicationRecord
   positioned on: :category, column: :category_position
 
   default_scope { order(:thread_position) }
+
+  enum :status, {
+    normal: 0,
+    node: 1
+  }
 end

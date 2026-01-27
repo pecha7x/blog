@@ -2,7 +2,7 @@ module Articles
   module Tree
     module Positioning
       module Thread
-        class PreviousArticleService < ApplicationService
+        class PreviousArticlesService < ApplicationService
           attr_reader :article
 
           def initialize(article:)
@@ -17,7 +17,6 @@ module Articles
               .where("thread_position < ?", article.thread_position)
               .where.not(id: article.id)
               .reorder(thread_position: :desc)
-              .first
           end
         end
       end

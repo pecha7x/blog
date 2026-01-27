@@ -1,7 +1,7 @@
 module Articles
   module Tree
     module Positioning
-      class NextArticleService < ApplicationService
+      class NextArticlesService < ApplicationService
         attr_reader :article
 
         def initialize(article:)
