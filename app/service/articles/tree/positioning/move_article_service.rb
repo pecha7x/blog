@@ -17,6 +17,11 @@ module Articles
         def call
           if replaceable_article.present?
             article.update(category_position: replaceable_article.category_position)
+
+            children = Articles::Tree::GetChildrenService.call(article:)
+            children.each_with_index do |child, i|
+              article.update(category_position: position + i + 1)
+            end
           end
         end
 
