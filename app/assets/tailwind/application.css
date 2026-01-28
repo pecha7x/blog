@@ -68,3 +68,9 @@
     @slot;
   }
 }
+
+:where(.lexxy-content) {
+  code, pre {
+    background-color: #dedede !important;
+  }
+}
