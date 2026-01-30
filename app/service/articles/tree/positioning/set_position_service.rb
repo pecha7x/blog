@@ -15,7 +15,7 @@ module Articles
 
           children = Articles::Tree::GetChildrenService.call(article:)
           children.each_with_index do |child, i|
-            article.update(category_position: position + i + 1)
+            child.update(category_position: position + i + 1)
           end
         end
       end
