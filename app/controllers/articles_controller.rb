@@ -16,24 +16,28 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.friendly.find(params.expect(:id))
+    category = @article.category
 
-    previous_article = Articles::Tree::Positioning::PreviousArticlesService.call(article: @article).normal.first
-    next_article = Articles::Tree::Positioning::NextArticlesService.call(article: @article).normal.first
-
-    if previous_article.present?
-      add_breadcrumb "Prev", category_article_path(previous_article.category, previous_article)
-    else
-      add_breadcrumb "Back to list", category_articles_path(@article.category)
+    @article_parents = [ { title: category.name, link: category_articles_path(category) } ]
+    article_parent_items(@article).each do |parent_item|
+      @article_parents.append({
+        title: parent_item.title,
+        link: category_article_path(category, parent_item)
+      })
     end
 
-    if next_article.present?
-      add_breadcrumb "Next", category_article_path(next_article.category, next_article)
-    else
-      add_breadcrumb "Back to list", category_articles_path(@article.category) if previous_article.present?
-    end
+    add_breadcrumbs
   end
 
   private
+
+  def article_parent_items(article, parents = [])
+    parent = article.parent
+    return parents if parent.blank?
+
+    parents.prepend(parent)
+    article_parent_items(parent, parents)
+  end
 
   def article_children_items(article, category)
     article.children.map do |child|
@@ -52,5 +56,22 @@ class ArticlesController < ApplicationController
     return nil if article.node?
 
     category_article_path(category, article)
+  end
+
+  def add_breadcrumbs
+    previous_article = Articles::Tree::Positioning::PreviousArticlesService.call(article: @article).normal.first
+    next_article = Articles::Tree::Positioning::NextArticlesService.call(article: @article).normal.first
+
+    if previous_article.present?
+      add_breadcrumb "Prev", category_article_path(previous_article.category, previous_article)
+    else
+      add_breadcrumb "Back to list", category_articles_path(@article.category)
+    end
+
+    if next_article.present?
+      add_breadcrumb "Next", category_article_path(next_article.category, next_article)
+    else
+      add_breadcrumb "Back to list", category_articles_path(@article.category) if previous_article.present?
+    end
   end
 end
