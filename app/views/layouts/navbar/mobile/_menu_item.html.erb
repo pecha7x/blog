@@ -1,6 +1,6 @@
 <% button_class = "block rounded-md px-3 py-2 text-lg font-medium text-gray-300 hover:bg-white/5 hover:text-white cursor-pointer" %>
 
-<% if section.categories.active.blank? %>
+<% if section.categories.blank? %>
   <%= link_to section.name, root_path, class: button_class %>
 <% else %>
   <details class="group" data-action="click->navbar#next">
@@ -15,7 +15,7 @@
 
     <div class="px-4">
       <ul class="flex flex-col gap-1">
-        <% section.categories.active.each do |category| %>
+        <% section.categories.each do |category| %>
           <%= link_to category_path(category), class: "group" do %>
             <li class="flex flex-row gap-2 items-center px-4 py-2 group-hover:bg-white/5">
               <%= icon_tag(category) %>

@@ -11,18 +11,18 @@ class ArticlesController < ApplicationController
       }
     end
 
-    add_breadcrumb "Back to #{category.name}", category_path(category)
+    add_breadcrumb "Back to #{category.name}", category_path(category) if category.active?
   end
 
   def show
     @article = Article.friendly.find(params.expect(:id))
-    category = @article.category
+    @category = @article.category
 
-    @article_parents = [ { title: category.name, link: category_articles_path(category) } ]
+    @article_parents = []
     article_parent_items(@article).each do |parent_item|
       @article_parents.append({
         title: parent_item.title,
-        link: category_article_path(category, parent_item)
+        link: category_article_path(@category, parent_item)
       })
     end
 

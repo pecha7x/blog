@@ -1,8 +1,18 @@
 <div id="<%= dom_id article %>" class="w-full sm:w-auto my-3 space-y-5 pb-25">
   <div>
     <div class="pb-2 text-sm">
-      <% @article_parents.each do |parent| %>
-        <%= link_to parent[:title], parent[:link], class: "text-indigo-700 font-semibold" %> /
+      <%= link_to category_articles_path(@category) do %>
+        <div class="pb-2 flex flex-row gap-1 items-center text-indigo-700 font-semibold">
+          <%= icon_tag(@category, zoom: 100, class: "inline") %>
+          <span><b><%= @category.name %></b></span>
+        </div>
+      <% end %>
+
+      <% @article_parents.each_with_index do |parent, i| %>
+        <% if i > 0 %>
+          /
+        <% end %>
+        <%= link_to "#{parent[:title]}", parent[:link], class: "text-indigo-700 font-semibold" %>
       <% end %>
     </div>  
 

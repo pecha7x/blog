@@ -34,6 +34,9 @@ class StaticPagesController < ApplicationController
     end
   end
 
+  def coming_soon
+  end
+
   private
 
   def article_children_items(article, category)

@@ -15,6 +15,7 @@ class Category < ApplicationRecord
 
   enum :status, {
     active: 0,
-    disabled: 1
+    pending: 1,
+    node: 2
   }
 end
