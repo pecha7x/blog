@@ -12,7 +12,11 @@
         <% if i > 0 %>
           /
         <% end %>
-        <%= link_to "#{parent[:title]}", parent[:link], class: "text-indigo-700 font-semibold" %>
+        <% if parent[:link].present? %>
+          <%= link_to "#{parent[:title]}", parent[:link], class: "text-indigo-700 font-semibold" %>
+        <% else %>
+          <span class="font-semibold"><%= parent[:title] %></span>
+        <% end %>
       <% end %>
     </div>  
 

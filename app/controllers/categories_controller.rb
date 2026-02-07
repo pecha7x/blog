@@ -7,7 +7,7 @@ class CategoriesController < ApplicationController
     elsif @category.pending?
       redirect_to "/coming-soon"
     else
-       add_breadcrumb "View More", category_articles_path(@category)
+      add_breadcrumb "View More", category_articles_path(@category)
     end
   end
 end

@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+  before_action :redirect_to_coming_soon, only: :show
+
   def index
     category = Category.friendly.find(params.expect(:category_id))
     @articles = category.articles.roots.map do |root_article|
@@ -20,9 +22,12 @@ class ArticlesController < ApplicationController
 
     @article_parents = []
     article_parent_items(@article).each do |parent_item|
+      link = nil
+      link = category_article_path(@category, parent_item) if parent_item.normal?
+
       @article_parents.append({
         title: parent_item.title,
-        link: category_article_path(@category, parent_item)
+        link:
       })
     end
 
@@ -73,5 +78,9 @@ class ArticlesController < ApplicationController
     else
       add_breadcrumb "Back to list", category_articles_path(@article.category) if previous_article.present?
     end
+  end
+
+  def redirect_to_coming_soon
+    redirect_to "/coming-soon" unless admin_user_signed_in?
   end
 end
