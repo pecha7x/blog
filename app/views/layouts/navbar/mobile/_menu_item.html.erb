@@ -17,11 +17,13 @@
       <ul class="flex flex-col gap-1">
         <% section.categories.each do |category| %>
           <%= link_to category_path(category), class: "group" do %>
-            <li class="flex flex-row gap-2 items-center px-4 py-2 group-hover:bg-white/5">
+            <% border_klass = '' %>
+            <% border_klass += 'border-b-2 border-solid border-gray-800' if category.underlined_name %>
+            <li class="flex flex-row gap-2 items-center px-4 py-2 group-hover:bg-white/5 <%= border_klass %>">
               <%= icon_tag(category) %>
               <span class="text-md text-gray-300 group-hover:text-white"><%= category.name %></span>
             </li>
-          <% end %>  
+          <% end %>
         <% end %>
       </ul>
     </div>

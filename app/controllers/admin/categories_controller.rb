@@ -66,7 +66,7 @@ module Admin
 
       # Only allow a list of trusted parameters through.
       def category_params
-        params.expect(category: %i[name description icon icon_height position status section_id])
+        params.expect(category: %i[name description icon icon_height position status section_id underlined_name])
       end
   end
 end
