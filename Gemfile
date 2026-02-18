@@ -40,7 +40,7 @@ group :development do
   gem "web-console"
 end
 
-gem "devise", "~> 4.9"
+gem "devise", "~> 5.0"
 gem "lexxy", "~> 0.1.23.beta"
 gem "positioning"
 gem "friendly_id", "~> 5.6.0"
